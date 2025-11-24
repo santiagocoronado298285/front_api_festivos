@@ -4,11 +4,9 @@ import { ReferenciasMaterialModule } from '../shared/modules/referencias-materia
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,
-    ReferenciasMaterialModule
-  ],
+  imports: [RouterOutlet, ReferenciasMaterialModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('FrontFestivos');
