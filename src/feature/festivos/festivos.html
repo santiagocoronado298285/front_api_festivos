@@ -1,0 +1,19 @@
+<mat-toolbar>
+    API FESTIVOS
+</mat-toolbar>
+
+<div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Buscar</mat-label>
+        <input mat-Input [(ngModel)]="textobusqueda">
+    </mat-form-field>
+    <button mat-stroked-button color="primary" (click)="Buscar()">Buscar</button>
+</div>
+
+<div>
+    <button mat-raised-button color="primary" (click)="Agregar()">Agregar</button>
+    <button mat-raised-button color="primary" (click)="Modificar()">Modificar</button>
+    <button mat-raised-button color="primary" (click)="Delete()">Eliminar</button>
+
+</div>
