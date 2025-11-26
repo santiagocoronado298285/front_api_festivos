@@ -18,7 +18,11 @@ import { FestivoModel } from '../../shared/entities/FestivoModel';
 export class Festivos implements OnInit {
   public textobusqueda: string = '';
   public festivos: FestivoModel[] = [];
-
+  public columnas = [
+    { name: "nombre", prop: "nombre" },
+    { name: "dia", prop: "dia" },
+    { name: "mes", prop: "mes" }
+  ]
 
   constructor(private festivoservice: FestivoService) {
   }
@@ -28,12 +32,12 @@ export class Festivos implements OnInit {
 
   public listarfestivos() {
     this.festivoservice.listarfestivos().subscribe({
-      next: (response) => { 
+      next: (response) => {
         this.festivos = response;
       },
       error: (error) => {
         window.alert(error.message);
-       }
+      }
     });
   }
 
