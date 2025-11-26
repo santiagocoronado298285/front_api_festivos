@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { MatToolbar } from "@angular/material/toolbar";
-import { MatFormField, MatLabel } from "@angular/material/input";
-import { MatAnchor } from "@angular/material/button";
+import { MatFormField, MatLabel, MatInput } from "@angular/material/input";
+import { MatButton } from "@angular/material/button";
 import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FestivoService } from '../../core/services/festivoService';
-import { response } from 'express';
-import { error } from 'console';
 import { FestivoModel } from '../../shared/entities/FestivoModel';
 
 @Component({
   selector: 'app-festivos',
-  imports: [MatToolbar, MatFormField, MatLabel, MatAnchor, FormsModule, NgxDatatableModule],
+  imports: [MatToolbar, MatFormField, MatLabel, MatInput, MatButton, FormsModule, NgxDatatableModule],
   templateUrl: './festivos.html',
   styleUrl: './festivos.css',
 })
@@ -24,8 +23,11 @@ export class Festivos implements OnInit {
     { name: "mes", prop: "mes" }
   ]
 
-  constructor(private festivoservice: FestivoService) {
-  }
+  constructor(
+    private festivoservice: FestivoService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
+
   ngOnInit(): void {
     this.listarfestivos()
   }
@@ -36,16 +38,15 @@ export class Festivos implements OnInit {
         this.festivos = response;
       },
       error: (error) => {
-        window.alert(error.message);
+        if (isPlatformBrowser(this.platformId)) {
+          window.alert(error.message);
+        }
       }
     });
   }
 
   public Buscar() { }
-
   public Agregar() { }
-
   public Delete() { }
-
   public Modificar() { }
 }

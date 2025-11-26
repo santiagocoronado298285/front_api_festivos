@@ -3,10 +3,9 @@
 </mat-toolbar>
 
 <div>
-
     <mat-form-field appearance="fill">
         <mat-label>Buscar</mat-label>
-        <input mat-Input [(ngModel)]="textobusqueda">
+        <input matInput [(ngModel)]="textobusqueda">
     </mat-form-field>
     <button mat-stroked-button color="primary" (click)="Buscar()">Buscar</button>
 </div>
@@ -16,8 +15,5 @@
     <button mat-raised-button color="primary" (click)="Modificar()">Modificar</button>
     <button mat-raised-button color="primary" (click)="Delete()">Eliminar</button>
 
-    <ngx-datatable [rows]="festivos">
-        
-    </ngx-datatable>
-
+    <ngx-datatable [rows]="festivos" [columns]="columnas" ngSkipHydration></ngx-datatable>
 </div>
